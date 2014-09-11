@@ -1,0 +1,9 @@
+*.bak
+*.log
+*~
+*.swp
+.cabal-sandbox
+cabal.sandbox.config
+/dist
+/_cache
+/_site

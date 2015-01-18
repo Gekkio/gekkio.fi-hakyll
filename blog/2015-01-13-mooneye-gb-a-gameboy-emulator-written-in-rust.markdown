@@ -67,7 +67,7 @@ Once again, the previous emulation code runs everything at t=4. Also, PUSH actua
 
 So, with real hardware the push would succeed normally, even though VRAM is only accessible 50% of the time spent executing the instruction!
 
-PUSH timing is actually something that Gambatte gets wrong, because the internal delay is at the end of the instruction. So, with Gambatte we would have memory writes at P2-P3, and only the low byte would be written.
+PUSH timing is actually something that Gambatte gets wrong, because the internal delay is at the end of the instruction. So, with Gambatte we would have memory writes at P1-P2, and only the low byte would be written.
 
 ## Accurate emulation
 

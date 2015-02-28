@@ -5,6 +5,9 @@ a {
 a:hover {
   text-decoration: underline;
 }
+.text-center {
+  text-align: center;
+}
 html {
   background: #fff url(../images/bg.jpg) repeat-x;
   color: #000;
@@ -56,4 +59,54 @@ body > article > footer {
 }
 .syntaxhighlighter {
   font-size: 0.75em !important;
+}
+
+#pcb-connections > g {
+  cursor: pointer;
+}
+#pcb-ui {
+  background-color: #fff;
+}
+#pcb-ui > button {
+  font-weight: bold;
+}
+#pcb-ui-controls {
+  width: 100px;
+  float: right;
+}
+#pcb-ui-images {
+  margin-right: 100px;
+}
+#pcb-ui-connections {
+  border: 1px solid #AFD1FF;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+#pcb-ui-connections > div {
+  cursor: pointer;
+  display: inline-block;
+  margin: 1px 3px;
+  padding: 3px;
+}
+#pcb-ui-connections > div.hovering {
+  background-color: #ff00ff;
+  background-color: rgba(255, 0, 255, 0.4);
+}
+#pcb-ui-connections > div.selected {
+  background-color: #0000ff;
+  background-color: rgba(0, 0, 255, 0.4);
+}
+#pcb-ui-connections > div.hovering.selected {
+  background-color: #000080;
+  background-color: rgba(0, 0, 120, 0.4);
+}
+.pcb-ui-svg {
+  display: inline-block;
+}
+.pcb-ui-small .pcb-ui-svg {
+  width: 400px;
+}
+.pcb-ui-large .pcb-ui-svg {
+  width: 800px;
 }

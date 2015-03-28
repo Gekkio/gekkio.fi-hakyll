@@ -24,36 +24,29 @@ Try the tool by pressing the loading button below, and hovering or clicking on t
 
 ## Cartridge PCB (printed circuit board)
 
-<div id="pcb-ui">
-<div id="pcb-ui-controls" style="display: none">
-<input id="pcb-ui-size-small" type="radio" name="pcb-ui-size" value="small" checked>
-<label for="pcb-ui-size-small">Small</label><br>
-<input id="pcb-ui-size-large" type="radio" name="pcb-ui-size" value="large">
-<label for="pcb-ui-size-large">Large</label><br>
-<div id="pcb-ui-connections"></div>
-</div>
-
-<div id="pcb-ui-images">
-<a href="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.jpg">
-<img width="400" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.small.jpg">
-</a>
-<a href="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.jpg">
-<img width="400" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.small.jpg">
-</a>
-</div>
-
-</div>
-<div style="clear: both"></div>
-
-<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.3.1/lodash.min.js"></script>
-<script src="/js/gameboy-pcb-ui.js"></script>
+<script src="/js/gb-pcb-vis.js"></script>
+<gbpcbvis>
+  <noscript>
+    <a href="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.jpg">
+      <img width="400" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.small.jpg">
+    </a>
+    <a href="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.jpg">
+      <img width="400" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.small.jpg">
+    </a>
+  </noscript>
+</gbpcbvis>
 <script>
-  $(function() {
-    pcb_ui.plant_button(pcb_ui.cartridge_connections, [
-      '/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.svg',
-      '/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.svg'
-    ]);
+  gbPcbVis.mount('gbpcbvis', {
+    connections: gbPcbVis.connections.cartridge,
+    images: [{
+      thumb: '/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.small.jpg',
+      href: '/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.jpg',
+      svg: '/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.svg'
+    }, {
+      thumb: '/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.small.jpg',
+      href: '/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.jpg',
+      svg: '/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.svg'
+    }]
   });
 </script>
 

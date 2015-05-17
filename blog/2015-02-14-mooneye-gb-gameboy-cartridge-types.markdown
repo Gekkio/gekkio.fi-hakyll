@@ -59,6 +59,8 @@ So, here's all the MBC types, and links to blog posts about them if I've written
 
 ### MBC1
 
+[Mooneye GB: Cartridge analysis - Wizards & Warriors X: Fortress of Fear (MBC1)](/blog/2015-05-17-mooneye-gb-cartridge-analysis-fortress-of-fear.html)
+
 ### MBC2
 
 ### MBC3

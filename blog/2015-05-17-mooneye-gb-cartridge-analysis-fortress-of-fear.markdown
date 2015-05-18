@@ -74,6 +74,9 @@ found in similar off-the-shelf components from the same manufacturer. In this ca
 can be found in DIP/SOP-packaged **Sharp LH531V00** even though it is a 1 MBit chip. So, we expect
 the layout to have 20 address pins, where one is unused in the 512 KBit ROM chip.
 
+*Update: Actually, many chips seem to follow the JEDEC 21-C standard, which defines a standard pin
+layout for ROM chips up to 8Mbit*. 
+
 Based on the data sheet we can see that A0-A13 are directly connected to the corresponding pins in
 the ROM. Address pins 14-16 are connected to the MBC, so the MBC controls the upper 3 bits of the
 address the ROM chip sees. In the visualization I'm using the M14-M18 naming as used by Jeff

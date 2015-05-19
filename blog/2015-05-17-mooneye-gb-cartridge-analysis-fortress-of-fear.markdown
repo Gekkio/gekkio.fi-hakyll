@@ -20,8 +20,8 @@ game we are going analyze is called *Wizards & Warriors X: Fortress of Fear*
 My cartridge has the code *DMG-WW-UKV*, which is probably the UK release of the game (?). The ROM
 dump matches with "Wizards & Warriors Chapter X - The Fortress of Fear (E) [!].gb" in the GoodGBX
 database, and the database doesn't have any other versions, so both European and American releases
-might have the same ROM. The ROM size is 512 Kbit (= 64 KB), which corresponds to a 17-bit address
-space ($00000 - $1FFFF).
+might have the same ROM. The ROM size is 512 Kbit (= 64 KB), which corresponds to a 16-bit address
+space ($0000 - $FFFF).
 
 ## Cartridge PCB (printed circuit board)
 
@@ -78,11 +78,11 @@ the layout to have 20 address pins, where one is unused in the 512 KBit ROM chip
 layout for ROM chips up to 8Mbit*. 
 
 Based on the data sheet we can see that A0-A13 are directly connected to the corresponding pins in
-the ROM. Address pins 14-16 are connected to the MBC, so the MBC controls the upper 3 bits of the
+the ROM. Address pins 14-15 are connected to the MBC, so the MBC controls the upper 2 bits of the
 address the ROM chip sees. In the visualization I'm using the M14-M18 naming as used by Jeff
-Frohwein in his MBC1 schematics. M17 and M18 are connected to the ROM chip, but the data sheet
-confirms they are unused. So, as a summary, the ROM address is composed of A0-A13 and M14-M16 giving
-us the full 17-bit address space as expected.
+Frohwein in his MBC1 schematics. M16, M17 and M18 are connected to the ROM chip, but the data sheet
+confirms they are unused. So, as a summary, the ROM address is composed of A0-A13 and M14-M15 giving
+us the full 16-bit address space as expected.
 
 The data pins D0-D4 in the cartridge header are connected to both the MBC and the ROM. The remaining
 pins D5-D7 are connected only to the ROM. In practice this means that the MBC can only handle 5-bit
@@ -101,7 +101,7 @@ to more complex cartridges where they are actually used.
 Based on the connections in the PCB, we can summarize the following findings:
 
 + Reading $0000 - $7FFF activates the ROM chip, but the physical ROM address is a combination of
-  14 bits from the address and 3 bits from the MBC
+  14 bits from the address and 2 bits from the MBC
 + MBC1 can access only address bits 13-15
 + MBC1 can access only data bits 0-5
 + MBC1 can access the WR, MREQ, and RS pins (this will be important later)

@@ -25,7 +25,7 @@ US).
 My cartridge has the code *DMG-HBA*, which is the Japanese release of the game (= Bomber Boy), and
 the ROM dump matches with "Bomber Boy (J) [!].gb" in the GoodGBX database. This time we have a
 1 Mbit (= 128 KB) ROM, which is larger than in the previous blog post. We have one extra address
-line, so we have a 18-bit address space ($00000 - $3FFFF).
+line, so we have a 17-bit address space ($00000 - $1FFFF).
 
 <gbpcbvis>
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.front.jpg">

@@ -94,9 +94,8 @@ is a bigger ROM than previously, now also M17 is connected to a valid pin.
 This time we didn't see anything exciting in the cartridges. The DMG-BEAN boards seem to be very
 common, so I think most RAMless classic Gameboy games use that same board layout. Having said that,
 I'm going to analyze an exception to that rule in the next blog post: Super Chinese Fighter GB. It
-has a 8Mbit (= 1 MB) ROM chip, so it needs 20 address pins and thus doesn't fit the DMG-BEAN layout.
-Also, the JEDEC standard doesn't specify pin layouts with more than 19 address pins, so we can
-expect to see something new.
+has an 8Mbit (= 1 MB) ROM chip, so it needs 20 address pins and thus doesn't fit the DMG-BEAN
+layout.
 
 After analysing Super Chinese Fighter, I'm going to move on to games with RAM chips. We're going to
 look at two different RAM sizes, and also an MBC1 game that has a 16Mbit ROM chip, which is the

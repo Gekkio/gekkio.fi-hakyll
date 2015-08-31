@@ -5,7 +5,7 @@ license:       AllRightsReserved
 license-file:  LICENSE
 author:        Joonas Javanainen
 maintainer:    joonas.javanainen@gmail.com
-copyright:     © 2014 Joonas Javanainen
+copyright:     © 2014-2015 Joonas Javanainen
 category:      Web
 build-type:    Simple
 cabal-version: >= 1.10

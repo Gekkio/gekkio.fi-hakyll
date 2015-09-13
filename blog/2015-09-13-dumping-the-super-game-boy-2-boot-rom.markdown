@@ -200,7 +200,7 @@ The ROM itself is probably the most anticlimatic and boring part of the entire t
 The only difference is the byte at position $00FD. At that position SGB and DMG have the value $01, while MGB and SGB2 have the value $FF. This affects the value of register A that is written to the $FF50 register that hides the boot ROM. The register is never cleared, so the value is also visible to the actual program on the cartridge and can be used to differentiate between different hardware. In disassembled form the last two instructions are:
 
 ```
-LD A, $01          ; $00FC
+LD A, $FF          ; $00FC
 LD ($FF00+$50), A  ; $00FE
                    ; $0100: cartridge ROM starts here
 ```

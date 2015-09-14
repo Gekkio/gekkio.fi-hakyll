@@ -4,6 +4,18 @@ import Hakyll
 
 main :: IO ()
 main = hakyll $ do
+  match "index.html" $ do
+    route idRoute
+    compile $ do
+      posts <- recentFirst =<< loadAll "blog/*"
+      let indexCtx = listField "posts" postCtx (return $ take 5 posts) <>
+                     defaultContext
+
+      getResourceBody
+        >>= applyAsTemplate indexCtx
+        >>= loadAndApplyTemplate "templates/default.html" indexCtx
+        >>= relativizeUrls
+
   match "images/**" $ do
     route   idRoute
     compile copyFileCompiler
@@ -35,21 +47,26 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "templates/default.html" postsCtx
         >>= relativizeUrls
 
-  match "index.html" $ do
-    route idRoute
+  match "templates/*" $ compile templateCompiler
+
+  create ["sitemap.xml"] $ do
+    route   idRoute
     compile $ do
       posts <- recentFirst =<< loadAll "blog/*"
-      let indexCtx = listField "posts" postCtx (return $ take 5 posts) <>
-                     defaultContext
+      pages <- loadAll "*.html"
+      let allPosts = (return (pages ++ posts))
+      let sitemapCtx = listField "entries" postCtx allPosts <>
+                       defaultContext
 
-      getResourceBody
-        >>= applyAsTemplate indexCtx
-        >>= loadAndApplyTemplate "templates/default.html" indexCtx
-        >>= relativizeUrls
-
-  match "templates/*" $ compile templateCompiler
+      makeItem ""
+        >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
+        >>= return . fmap (replaceAll pattern replacement)
+          where
+            pattern = "/index.html"
+            replacement = const "/"
 
 postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y" <>
+  modificationTimeField "lastmod" "%Y-%m-%d" <>
   defaultContext

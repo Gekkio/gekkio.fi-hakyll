@@ -3,6 +3,11 @@ import Control.Monad (liftM)
 import Data.Monoid ((<>))
 import Hakyll.Web.Sass (sassCompiler)
 import Hakyll
+import Text.Pandoc (WriterOptions, writerHtml5)
+
+myWriterOptions :: WriterOptions
+myWriterOptions = defaultHakyllWriterOptions
+  { writerHtml5 = True }
 
 main :: IO ()
 main = hakyll $ do
@@ -36,7 +41,7 @@ main = hakyll $ do
 
   match "blog/*" $ do
     route $ setExtension "html"
-    compile $ pandocCompiler
+    compile $ pandocCompilerWith defaultHakyllReaderOptions myWriterOptions
       >>= loadAndApplyTemplate "templates/post.html"    postCtx
       >>= loadAndApplyTemplate "templates/default.html" postCtx
       >>= relativizeUrls

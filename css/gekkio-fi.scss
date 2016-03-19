@@ -94,19 +94,19 @@ pre {
   background-color: #f8f8f8;
 }
 
-gbpcbvis:after {
+.gbpcbvis:after {
   content: " ";
   clear: both;
   display: block;
 }
 
-gbpcbvis button {
+.gbpcbvis button {
   font-weight: bold;
 }
-gbpcbvis .controls {
+.gbpcbvis .controls {
   width: 100px;
   float: right;
 }
-gbpcbvis .images {
+.gbpcbvis .images {
   margin-right: 100px;
 }

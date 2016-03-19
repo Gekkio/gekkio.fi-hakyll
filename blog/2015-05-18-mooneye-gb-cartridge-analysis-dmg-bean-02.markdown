@@ -27,14 +27,14 @@ the ROM dump matches with "Bomber Boy (J) [!].gb" in the GoodGBX database. This 
 1 Mbit (= 128 KB) ROM, which is larger than in the previous blog post. We have one extra address
 line, so we have a 17-bit address space ($00000 - $1FFFF).
 
-<gbpcbvis>
+<div class="gbpcbvis">
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.front.jpg">
     <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.front.small.jpg">
   </a>
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.back.jpg">
     <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.back.small.jpg">
   </a>
-</gbpcbvis>
+</div>
 
 As expected, the board has an MBC1 chip, and a Sharp LH5308ND ROM chip labeled with DMG-HBA-0. The
 connections are the same as last time with one exception: this time M16 is connected to a valid pin
@@ -53,14 +53,14 @@ My cartridge has the code *DMG-LW-USA*, so it's the US release. The correspondin
 "WWF Superstars (UE) [!].gb", so apparently the European version has the same ROM. This game is also
 1 Mbit (= 128 KB).
 
-<gbpcbvis>
+<div class="gbpcbvis">
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.front.jpg">
     <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.front.small.jpg">
   </a>
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.back.jpg">
     <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.back.small.jpg">
   </a>
-</gbpcbvis>
+</div>
 
 Once again, we have an MBC1 chip, but this time we have a Toshiba ROM chip: TC531001CF labeled with
 DMG-LWE-0. Unlike the previous ROM chips, this chip actually has a public data sheet! However, it
@@ -77,14 +77,14 @@ uses the standard layout so there's nothing special about it.
 My cartridge has the code *DMG-G2-UKV*, so it's the UK release, and the dump matches with "Gauntlet
 II (U) [!].gb" in the GoodGBX database. The game has a 2MBit (= 256 KB) ROM.
 
-<gbpcbvis>
+<div class="gbpcbvis">
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.front.jpg">
     <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.front.small.jpg">
   </a>
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.back.jpg">
     <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.back.small.jpg">
   </a>
-</gbpcbvis>
+</div>
 
 Once again we have an MBC1 chip, and a Toshiba ROM chip: TC532000BF labeled with DMG-G2E-0. Since it
 is a bigger ROM than previously, now also M17 is connected to a valid pin.

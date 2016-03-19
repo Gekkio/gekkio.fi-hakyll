@@ -25,7 +25,7 @@ Try the tool by pressing the loading button below, and hovering or clicking on t
 ## Cartridge PCB (printed circuit board)
 
 <script src="/js/gb-pcb-vis.js"></script>
-<gbpcbvis>
+<div data-is="gbpcbvis" class="gbpcbvis">
   <noscript>
     <a href="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.jpg">
       <img alt="" width="400" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.small.jpg">
@@ -34,7 +34,7 @@ Try the tool by pressing the loading button below, and hovering or clicking on t
       <img alt="" width="400" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.small.jpg">
     </a>
   </noscript>
-</gbpcbvis>
+</div>
 <script>
   gbPcbVis.mount('gbpcbvis', {
     connections: gbPcbVis.connections.cartridge,

@@ -26,7 +26,7 @@ space ($0000 - $FFFF).
 ## Cartridge PCB (printed circuit board)
 
 <script src="/js/gb-pcb-vis.js"></script>
-<gbpcbvis>
+<div data-is="gbpcbvis" class="gbpcbvis">
   <noscript>
     <a href="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.front.jpg">
       <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.front.small.jpg">
@@ -35,7 +35,7 @@ space ($0000 - $FFFF).
       <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.back.small.jpg">
     </a>
   </noscript>
-</gbpcbvis>
+</div>
 <script>
   gbPcbVis.mount('gbpcbvis', {
     connections: gbPcbVis.connections.cartridge.concat([

@@ -4,10 +4,10 @@ date: 2016-03-19
 tags: Gameboy
 ---
 
-Last year I took a photo of the PCBs of all Game Boy games I own, but I never
-managed to categorize or publish the scans. I'm not going to analyze all of
-these in detail, so I'm just going to leave the photos and basic information
-here for those who are interested in such things.
+Last year I took PCB photos of all Game Boy games I own, but I never managed to
+categorize or publish the scans. I'm not going to analyze all of these in
+detail, so I'm just going to leave the photos and basic information here for
+those who are interested in such things.
 
 The titles are based on the current No-Intro Game Boy and Game Boy Color
 databases, and there might be slight differences compared to more commonly seen

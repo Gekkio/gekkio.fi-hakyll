@@ -13,7 +13,7 @@ game we are going analyze is called *Wizards & Warriors X: Fortress of Fear*
 
 <p class="text-center">
 <a href="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.jpg">
-<img width="600" src="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.small.jpg">
+<img alt="" width="600" src="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.small.jpg">
 </a>
 </p>
 
@@ -29,10 +29,10 @@ space ($0000 - $FFFF).
 <gbpcbvis>
   <noscript>
     <a href="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.front.jpg">
-      <img width="400" src="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.front.small.jpg">
+      <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.front.small.jpg">
     </a>
     <a href="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.back.jpg">
-      <img width="400" src="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.back.small.jpg">
+      <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-01.DMG-WW-UKV.back.small.jpg">
     </a>
   </noscript>
 </gbpcbvis>

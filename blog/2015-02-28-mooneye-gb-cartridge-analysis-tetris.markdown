@@ -9,7 +9,7 @@ In my previous blog post, I described the reasons why MBC chips are included in 
 
 <p class="text-center">
 <a href="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.jpg">
-<img width="600" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.small.jpg">
+<img alt="" width="600" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.small.jpg">
 </a>
 </p>
 
@@ -28,10 +28,10 @@ Try the tool by pressing the loading button below, and hovering or clicking on t
 <gbpcbvis>
   <noscript>
     <a href="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.jpg">
-      <img width="400" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.small.jpg">
+      <img alt="" width="400" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.front.small.jpg">
     </a>
     <a href="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.jpg">
-      <img width="400" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.small.jpg">
+      <img alt="" width="400" src="/images/gameboy-boards/DMG-TRA-1.DMG-TR-SCN-1.back.small.jpg">
     </a>
   </noscript>
 </gbpcbvis>

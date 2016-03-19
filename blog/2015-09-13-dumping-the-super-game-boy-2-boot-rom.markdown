@@ -30,7 +30,7 @@ The SGB uses a divided clock signal from the SNES/SFC, while the SGB2 uses a sep
 My solution was to very surgically lift the clock pin of the CPU without causing any other permanent damage. I did not want to take out the crystal, because it's part of a small circuit and as far as I know could not be directly replaced with a clock signal. One option would've been to lift two ICD2 clock pins, but I decided that one CPU pin would be easier and less risky. I managed to lift the clock pin (pin 67), and soldered a simple connector to make it easy to plug different clock sources. This would later enable me to also connect it back to the ICD2 to restore normal behaviour.
 
 <p class="text-center">
-![](/images/2015-09-13-lifted-pin.jpg)<br>
+![Lifted pin + connector](/images/2015-09-13-lifted-pin.jpg)<br>
 Lifted pin + connector
 </p>
 
@@ -161,35 +161,35 @@ Some issues with the CPU behaviour were random, while some of them were dependen
 Here's some logic analyser pictures (click to enlarge). The zoom levels and positions are a bit different, so they are not directly comparable (sorry!).
 
 <p class="text-center">
-[![](/images/2015-09-13-sgb2-normal.small.png)](/images/2015-09-13-sgb2-normal.png)<br>
+[![Normal behaviour](/images/2015-09-13-sgb2-normal.small.png)](/images/2015-09-13-sgb2-normal.png)<br>
 Normal behaviour
 </p>
 
 <p class="text-center">
-[![](/images/2015-09-13-sgb2-overclock.small.png)](/images/2015-09-13-sgb2-overclock.png)<br>
+[![Overclocked behaviour](/images/2015-09-13-sgb2-overclock.small.png)](/images/2015-09-13-sgb2-overclock.png)<br>
 Overclocked behaviour
 </p>
 
 Let's take a closer look at some important moments in the pictures!
 
 <p class="text-center">
-![](/images/2015-09-13-highlight-a.png)<br>
+![Trigger point](/images/2015-09-13-highlight-a.png)<br>
 Trigger point (time 0.0s) is exactly at the $FF14 access. We can still see the $FF13 address latched in the bus even though the access happened much earlier.
 </p>
 
 <p class="text-center">
-![](/images/2015-09-13-highlight-b.png)<br>
+![Normal behaviour](/images/2015-09-13-highlight-b.png)<br>
 This is what the normal behaviour looks like. We can see the $FF50 access, and then the CPU starts fetching and executing code from $0100, $0101, $0102, etc.
 </p>
 
 <p class="text-center">
-![](/images/2015-09-13-highlight-c.png)<br>
+![Overclocked behaviour](/images/2015-09-13-highlight-c.png)<br>
 This is the overclocked behaviour. We see that the clock stops for a moment, while Teensy is reconfiguring the pin. Then we see the CPU going crazy once the overclocked signal appears.
 At this zoom level we can't see all the addresses, but I took a closer look in the logic analyser software and $FF50 is not there!
 </p>
 
 <p class="text-center">
-![](/images/2015-09-13-highlight-d.png)<br>
+![CPU going crazy](/images/2015-09-13-highlight-d.png)<br>
 Here we can see the CPU still going crazy and accessing silly addresses. It even reads backwards ($0377, then $0376)! However, once the clock stabilizes, it continues execution from $0377 normally (unfortunately not visible in the picture).
 </p>
 

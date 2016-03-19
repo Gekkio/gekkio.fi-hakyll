@@ -18,7 +18,7 @@ US).
 
 <p class="text-center">
 <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.jpg">
-<img width="600" src="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.small.jpg">
+<img alt="" width="600" src="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.small.jpg">
 </a>
 </p>
 
@@ -29,10 +29,10 @@ line, so we have a 17-bit address space ($00000 - $1FFFF).
 
 <gbpcbvis>
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.front.jpg">
-    <img width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.front.small.jpg">
+    <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.front.small.jpg">
   </a>
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.back.jpg">
-    <img width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.back.small.jpg">
+    <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-HBA.back.small.jpg">
   </a>
 </gbpcbvis>
 
@@ -45,7 +45,7 @@ actually a JEDEC standard so there's nothing surprising here.
 
 <p class="text-center">
 <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.jpg">
-<img width="600" src="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.small.jpg">
+<img alt="" width="600" src="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.small.jpg">
 </a>
 </p>
 
@@ -55,10 +55,10 @@ My cartridge has the code *DMG-LW-USA*, so it's the US release. The correspondin
 
 <gbpcbvis>
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.front.jpg">
-    <img width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.front.small.jpg">
+    <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.front.small.jpg">
   </a>
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.back.jpg">
-    <img width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.back.small.jpg">
+    <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-LW-USA.back.small.jpg">
   </a>
 </gbpcbvis>
 
@@ -70,7 +70,7 @@ uses the standard layout so there's nothing special about it.
 
 <p class="text-center">
 <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.jpg">
-<img width="600" src="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.small.jpg">
+<img alt="" width="600" src="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.small.jpg">
 </a>
 </p>
 
@@ -79,10 +79,10 @@ II (U) [!].gb" in the GoodGBX database. The game has a 2MBit (= 256 KB) ROM.
 
 <gbpcbvis>
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.front.jpg">
-    <img width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.front.small.jpg">
+    <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.front.small.jpg">
   </a>
   <a href="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.back.jpg">
-    <img width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.back.small.jpg">
+    <img alt="" width="400" src="/images/gameboy-boards/DMG-BEAN-02.DMG-G2-UKV.back.small.jpg">
   </a>
 </gbpcbvis>
 

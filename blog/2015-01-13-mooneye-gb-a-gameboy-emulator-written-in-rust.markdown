@@ -2,7 +2,6 @@
 title: Mooneye GB: A Gameboy emulator written in Rust
 date: 2015-01-13
 categories: Rust, Mooneye GB
-brushes: Rust
 tags: Rust, Gameboy, Mooneye GB
 ---
 
@@ -12,7 +11,7 @@ While writing my emulator, I noticed that there's actually quite little precise 
 
 As an example, let's look at the PUSH/POP instructions, which work on a target 16-bit register. POP takes 3 machine cycles (= 12 clock cycles, but I like to use m cycles instead), while PUSH takes 4 machine cycles. Most emulators implement POP BC and PUSH BC like this:
 
-<pre class="brush: rust">
+```rust
 let op = read_op();
 match op {
   // ...
@@ -28,7 +27,7 @@ match op {
   }
   // ...
 }
-</pre>
+```
 
 This might seem perfectly fine, but is actually inaccurate if we look at the itty-bitty details. If we access a part of memory where timing matters, we might end up emulating the real hardware incorrectly. For example, the VRAM in the Gameboy is only accessible during certain times. If we try to access the VRAM when it's inaccessible, our reads will return 0xFF and writes will have no effect.
 
@@ -73,7 +72,7 @@ PUSH timing is actually something that Gambatte gets wrong, because the internal
 
 If we aim for accuracy, we must emulate correctly the individual cycles and all observable behaviour of hardware during these cycles. A fairly simple and accurate way of emulation would look something like this:
 
-<pre class="brush: rust">
+```rust
 let op = read_op();
 cycle_tick_emulate_hardware();
 
@@ -103,6 +102,6 @@ match op {
   }
   // ...
 }
-</pre>
+```
 
 This is what Mooneye GB does currently, but I'm working on improving the efficiency by only emulating things that have observable side-effects. For example, if the memory writes of PUSH are done to internal RAM, we don't have to emulate any other hardware at that point. Essentially the hardware state should be lazily evaluated. I'm honestly curious how easily this would work with lazily evaluated languages such as Haskell...

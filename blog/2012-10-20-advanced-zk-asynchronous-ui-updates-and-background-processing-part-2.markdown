@@ -2,7 +2,6 @@
 title: Advanced ZK: Asynchronous UI updates and background processing – part 2
 date: 2012-10-20T23:02:56+02:00
 categories: Java, Web
-brushes: Java
 tags: ZK, Java
 ---
 
@@ -22,7 +21,7 @@ First we need an ExecutorService that we can use in our ZK code. In most cases w
 
 In this sample project I will use a simple holder class, which manages the lifecycle of a single statically available ExecutorService instance. This holder _must be configured as a listener_ in zk.xml.
 
-<pre class="brush: java">
+```java
 package sample;
 
 import java.util.concurrent.ExecutorService;
@@ -55,7 +54,7 @@ public class SampleExecutorHolder implements WebAppInit, WebAppCleanup {
     }
 
 }
-</pre>
+```
 
 Note that the thread pool is configured using a fixed size based on processors in the system. Proper thread pool sizing is very important, and depends on the type of tasks you intend to execute. The maximum number of threads is also the maximum amount of simultaneous concurrent tasks!
 
@@ -65,7 +64,7 @@ We'll use ZK server push to communicate the task results back to the UI, so the 
 
 The first event class represents a status update that is sent while the task is still running. In this example it will contain the amount of characters in the input string.
 
-<pre class="brush: java">
+```java
 package sample;
 
 import org.zkoss.zk.ui.event.Event;
@@ -79,11 +78,12 @@ public class FirstStepEvent extends Event {
         this.amountOfCharacters = amountOfCharacters;
     }
 
-}</pre>
+}```
 
 The second event class represents the fully completed task. In this example it contains the input string in upper case.
 
-<pre class="brush: java">package sample;
+```java
+package sample;
 
 import org.zkoss.zk.ui.event.Event;
 
@@ -96,7 +96,7 @@ public class SecondStepEvent extends Event {
         this.upperCaseResult = upperCaseResult;
     }
 
-}</pre>
+}```
 
 ## 3. Write the task class
 
@@ -108,7 +108,7 @@ The task class should have the following characteristics:
 
 In this example the only input data is a string that will be used to compute the task results.
 
-<pre class="brush: java">
+```java
 package sample;
 
 import java.util.Locale;
@@ -123,7 +123,7 @@ public class SampleTask implements Runnable {
 
     private final String input;
     private final Desktop desktop;
-    private final EventListener&lt;Event&gt; eventListener;
+    private final EventListener<Event> eventListener;
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public SampleTask(String input, Desktop desktop, EventListener eventListener) {
@@ -149,7 +149,7 @@ public class SampleTask implements Runnable {
     }
 
 }
-</pre>
+```
 
 Note how all the constructor arguments are stored in private final fields, and how the input data is immutable (Strings are immutable in Java!). The task simulates long-running processing by using Thread.sleep, and submits a status event when the "processing" is half done.
 
@@ -157,16 +157,16 @@ Note how all the constructor arguments are stored in private final fields, and h
 
 Using the task in composers is very simple. You only need to enable server push, and submit a new task instance to the executor. This automatically starts the task once a free background thread is available.
 
-<pre class="brush: java">
+```java
 desktop.enableServerPush(true);
 // Get the executor from somewhere
 executor = SampleExecutorHolder.getExecutor();
 executor.execute(new SampleTask(input.getValue(), desktop, this));
-</pre>
+```
 
 In this sample the composer extends GenericForwardComposer, which implements EventListener, so it can itself handle the resulting task events. Both events are handled by methods that update the UI with status information.
 
-<pre class="brush: java">
+```java
 public void onFirstStepCompleted(FirstStepEvent event) {
     status.setValue("Task running: " + event.amountOfCharacters + " characters in input");
 }
@@ -174,7 +174,7 @@ public void onFirstStepCompleted(FirstStepEvent event) {
 public void onSecondStepCompleted(SecondStepEvent event) {
     status.setValue("Task finished: " + event.upperCaseResult);
 }
-</pre>
+```
 
 ## Final words
 

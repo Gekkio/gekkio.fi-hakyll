@@ -2,25 +2,24 @@
 title: In defense of Scala: Understanding the ++ operator
 date: 2011-11-29T12:13:07+01:00
 categories: Scala
-brushes: Java, Scala
 tags: Scala
 ---
 
 Many people, including [Stephen Colebourne](http://blog.joda.org/2011/11/scala-feels-like-ejb-2-and-other.html), have complained about some of the methods in the Scala collections API. A common example is the ++ operator:
 
-<pre class="brush: scala">
+```scala
 // There are many variants but this is what Stephen Colebourne used as an example
-def ++ [B &gt;: A, That] (that: TraversableOnce[B])(implicit bf: CanBuildFrom[List[A], B, That]) : That
-</pre>
+def ++ [B >: A, That] (that: TraversableOnce[B])(implicit bf: CanBuildFrom[List[A], B, That]) : That
+```
 
 Here's an example of its use:
 
-<pre class="brush: scala">
-  val first = List(1, 2, 3)
-  val second = List(4, 5, 6)
-  println(first ++ second)
-  // List(1, 2, 3, 4, 5, 6)
-</pre>
+```scala
+val first = List(1, 2, 3)
+val second = List(4, 5, 6)
+println(first ++ second)
+// List(1, 2, 3, 4, 5, 6)
+```
 
 In this blog post I'll try to show that the perceived complexity of the definition is a necessary thing arising from several design goals. I'll try to show code examples in Java so that the overall syntax is familiar for most people. Basically I'm trying to say that by following the following three goals you end up with the same kind of definition that Scala has (except that it cannot be represented with Java without violating any of the goals). If you feel that your grasp of Java generics is lacking or just want the TLDR version, you can [skip right away to the monstrosity](#final).
 
@@ -43,27 +42,27 @@ In this blog post I'll try to show that the perceived complexity of the definiti
 
 First we have a naive ImmutableList implementation that just wraps a standard Java list:
 
-<pre class="brush: java">
+```java
 // ImmutableList.java
-public class ImmutableList&lt;A&gt; {
-  private final List&lt;A&gt; inner;
+public class ImmutableList<A> {
+  private final List<A> inner;
 
-  private ImmutableList(List&lt;A&gt; inner) {
+  private ImmutableList(List<A> inner) {
     this.inner = inner;
   }
 
-  public static ImmutableList&lt;A&gt; of(A value1, A value2) {
-    List&lt;A&gt; inner = new ArrayList&lt;A&gt;();
+  public static ImmutableList<A> of(A value1, A value2) {
+    List<A> inner = new ArrayList<A>();
     inner.add(value1);
     inner.add(value2);
-    return new ImmutableList&lt;A&gt;(inner);
+    return new ImmutableList<A>(inner);
   }
 }
-</pre>
+```
 
 We'll also use some data types to demonstrate design goal 3:
 
-<pre class="brush: java">
+```java
 public interface Animal {
   String getSound();
 }
@@ -79,43 +78,43 @@ public class Dog implements Animal {
     return "woof";
   }
 }
-</pre>
+```
 
 ## Attempt 1
 
-<pre class="brush: java">
+```java
 // ImmutableList.java
-public ImmutableList&lt;A&gt; concat(ImmutableList&lt;A&gt; other) {
-  List&lt;A&gt; newInner = new ArrayList&lt;A&gt;();
+public ImmutableList<A> concat(ImmutableList<A> other) {
+  List<A> newInner = new ArrayList<A>();
   newInner.addAll(this.inner);
   newInner.addAll(other.inner);
-  return new ImmutableList&lt;A&gt;(newInner);
+  return new ImmutableList<A>(newInner);
 }
-</pre>
+```
 
 Well that was easy, right?
 
 Nope, the implementation doesn't support variances (return element type can be super type of T, argument element type can be sub type of T).
 
-<pre class="brush: java">
-ImmutableList&lt;Cat&gt; cats = ImmutableList.of(new Cat(), new Cat());
-ImmutableList&lt;Dog&gt; dogs = ImmutableList.of(new Dog(), new Dog());
-ImmutableList&lt;Animal&gt; animals = cats.concat(dogs); // Will NOT compile
-</pre>
+```java
+ImmutableList<Cat> cats = ImmutableList.of(new Cat(), new Cat());
+ImmutableList<Dog> dogs = ImmutableList.of(new Dog(), new Dog());
+ImmutableList<Animal> animals = cats.concat(dogs); // Will NOT compile
+```
 
 ## Attempt 2
 
 As far as I know, it's not possible to make the above code compile with Java unless you drop generics (= violate goal 2). It's possible to play with wildcards if you make it a static method instead:
 
-<pre class="brush: java">
+```java
 // ImmutableList.java
-public static &lt;S&gt; ImmutableList&lt;S&gt; concat(ImmutableList&lt;? extends S&gt; first, ImmutableList&lt;? extends S&gt; second) {
-  List&lt;S&gt; newInner = new ArrayList&lt;S&gt;();
+public static <S> ImmutableList<S> concat(ImmutableList<? extends S> first, ImmutableList<? extends S> second) {
+  List<S> newInner = new ArrayList<S>();
   newInner.addAll(first.inner);   
   newInner.addAll(second.inner);  
-  return new ImmutableList&lt;S&gt;(newInner);
+  return new ImmutableList<S>(newInner);
 }
-</pre>
+```
 
 But a static method is a completely different beast, so let's just ignore this problem for a moment and forget the support for variances. We are violating goal 3, but let's just go on.
 
@@ -123,29 +122,29 @@ But a static method is a completely different beast, so let's just ignore this p
 
 Now let's imagine we extend our immutable collection library with another type: ImmutableSet. We want to be able to concat sets too, so we create a concat method (still violating goal 3 regarding variances):
 
-<pre class="brush: java">
+```java
 // ImmutableSet.java
-public ImmutableSet&lt;A&gt; concat(ImmutableSet&lt;A&gt; other);
-</pre>
+public ImmutableSet<A> concat(ImmutableSet<A> other);
+```
 
 Now, based on goal 3 we must abstract this concat method to an interface called ImmutableCollection:
 
-<pre class="brush: java">
+```java
 // ImmutableCollection.java
-public interface ImmutableCollection&lt;A&gt; {
-  ImmutableCollection&lt;A&gt; concat(ImmutableCollection&lt;A&gt; other);
+public interface ImmutableCollection<A> {
+  ImmutableCollection<A> concat(ImmutableCollection<A> other);
 }
-</pre>
+```
 
 Looks good, right?
 
 Nope, the concat method now returns a generic collection, and the actual type is lost. It's very reasonable to expect this to work:
 
-<pre class="brush: java">
-ImmutableList&lt;Dog&gt; dogs = ImmutableList.of(new Dog(), new Dog());
-ImmutableList&lt;Dog&gt; moreDogs = ImmutableList.of(new Dog(), new Dog());
-ImmutableList&lt;Dog&gt; fourDogs = dogs.concat(moreDogs); // Won't compile because concat returns ImmutableCollection
-</pre>
+```java
+ImmutableList<Dog> dogs = ImmutableList.of(new Dog(), new Dog());
+ImmutableList<Dog> moreDogs = ImmutableList.of(new Dog(), new Dog());
+ImmutableList<Dog> fourDogs = dogs.concat(moreDogs); // Won't compile because concat returns ImmutableCollection
+```
 
 The point here is that _the returned object is an ImmutableList_, but at compile time we cannot abstract the method in ImmutableCollection AND preserve the return type. We can of course cast the return value but we'll violate goal 3.
 
@@ -153,15 +152,15 @@ The point here is that _the returned object is an ImmutableList_, but at compile
 
 We need a way to describe the implementation type in the interface:
 
-<pre class="brush: java">
+```java
 // ImmutableCollection.java
-&lt;THAT extends ImmutableCollection&lt;A&gt;&gt; THAT concat(ImmutableCollection&lt;A&gt; other);
+<THAT extends ImmutableCollection<A>> THAT concat(ImmutableCollection<A> other);
 // ImmutableList.java
-public &lt;THAT extends ImmutableCollection&lt;A&gt;&gt; THAT concat(ImmutableCollection&lt;A&gt; other) {
+public <THAT extends ImmutableCollection<A>> THAT concat(ImmutableCollection<A> other) {
   // ...
-  return new ImmutableList&lt;A&gt;(newInner); // Won't compile!!
+  return new ImmutableList<A>(newInner); // Won't compile!!
 }
-</pre>
+```
 
 Now the interface compiles and the dog example works, but the implementation of concat will not compile anymore. The problem is that the implementation of concat must support all ImmutableCollections while the implementation is providing only a subtype (= ImmutableList).
 
@@ -169,52 +168,50 @@ Now the interface compiles and the dog example works, but the implementation of 
 
 We must somehow abstract away the construction of the new collection:
 
-<pre class="brush: java">
+```java
 // ImmutableBuilder.java
-public interface ImmutableBuilder&lt;THAT&gt; {
+public interface ImmutableBuilder<THAT> {
   THAT build(Collection elements);
 }
-</pre>
+```
 
 I've violated goal 2 and dropped generics from elements in advance because I know they won't work. An ImmutableBuilder is just a factory that knows how to create objects of type THAT from a collection of elements. Now we'll change the signatures of both the interface and the implementation:
 
-<pre class="brush: java">
+```java
 // ImmutableCollection.java
-&lt;THAT&gt; THAT concat(ImmutableCollection&lt;A&gt; other, ImmutableBuilder&lt;THAT&gt; builder);
+<THAT> THAT concat(ImmutableCollection<A> other, ImmutableBuilder<THAT> builder);
 
 // ImmutableList.java
-public &lt;THAT&gt; THAT concat(ImmutableCollection&lt;A&gt; other, ImmutableBuilder&lt;THAT&gt; builder) {
-  List&lt;A&gt; inner = // ...
+public <THAT> THAT concat(ImmutableCollection<A> other, ImmutableBuilder<THAT> builder) {
+  List<A> inner = // ...
   return builder.build(inner);
 }
-</pre>
+```
 
 Everything compiles now, so now we only need an implementation of a builder:
 
-<pre class="brush: java">
+```java
 // ImmutableList.java
-public static &lt;T&gt; ImmutableBuilder&lt;ImmutableList&lt;T&gt;&gt; builder() {
-  return new ImmutableBuilder&lt;ImmutableList&lt;T&gt;&gt;() {
-    public ImmutableList&lt;T&gt; build(Collection elements) {
-      return new ImmutableList&lt;T&gt;(new ArrayList&lt;T&gt;(elements));
+public static <T> ImmutableBuilder<ImmutableList<T>> builder() {
+  return new ImmutableBuilder<ImmutableList<T>>() {
+    public ImmutableList<T> build(Collection elements) {
+      return new ImmutableList<T>(new ArrayList<T>(elements));
     }
   };
 }
-</pre>
+```
 
 ## Overview of the final Java version
 
 We now have everything in place for our immutable collection API. On our journey we have violated goals 2 and 3 (due to language limitations) and added complexity to our implementation. However, the complexity cannot be avoided without violating the design goals. Our API is also pretty clunky to use:
 
-<pre class="brush: java">
-// ImmutableCollection.java
-&lt;THAT&gt; THAT concat(ImmutableCollection&lt;A&gt; other, ImmutableBuilder&lt;THAT&gt; builder);</pre>
-<pre class="brush: java">ImmutableBuilder&lt;ImmutableList&lt;Dog&gt;&gt; listBuilder = ImmutableList.builder();
+```java
+ImmutableBuilder<ImmutableList<Dog>> listBuilder = ImmutableList.builder();
 
-ImmutableList&lt;Dog&gt; dogs = ImmutableList.of(new Dog(), new Dog());
-ImmutableList&lt;Dog&gt; moreDogs = ImmutableList.of(new Dog(), new Dog());
-ImmutableList&lt;Dog&gt; fourDogs = dogs.concat(moreDogs, listBuilder);
-</pre>
+ImmutableList<Dog> dogs = ImmutableList.of(new Dog(), new Dog());
+ImmutableList<Dog> moreDogs = ImmutableList.of(new Dog(), new Dog());
+ImmutableList<Dog> fourDogs = dogs.concat(moreDogs, listBuilder);
+```
 
 We don't support variances and we have to pass around a builder for most of the operations. Due to goal 1, most interesting operations on the collections will return new ones, and thus will need a builder instance!
 
@@ -228,15 +225,15 @@ Reading this made me completely lose my respect to the guy. **This is absolutely
 
 Java:
 
-<pre class="brush: java">
-&lt;THAT&gt; THAT concat(ImmutableCollection&lt;A&gt; other, ImmutableBuilder&lt;THAT&gt; builder);
-</pre>
+```java
+<THAT> THAT concat(ImmutableCollection<A> other, ImmutableBuilder<THAT> builder);
+```
 
 Scala:
 
-<pre class="brush: scala">
-def ++ [B &gt;: A, That] (that: TraversableOnce[B])(implicit bf: CanBuildFrom[List[A], B, That]) : That
-</pre>
+```scala
+def ++ [B >: A, That] (that: TraversableOnce[B])(implicit bf: CanBuildFrom[List[A], B, That]) : That
+```
 
 First thing you should note is that they are not actually equivalent. The Scala version does not violate any goal, but the Java version violates goals 2 and 3. Let's look at all the type parameters we have here:
 

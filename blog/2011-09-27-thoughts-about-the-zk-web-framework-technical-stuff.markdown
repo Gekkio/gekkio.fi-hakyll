@@ -2,7 +2,6 @@
 title: Thoughts about the ZK Web Framework: Technical stuff
 date: 2011-09-27T09:12:19+02:00
 categories: Java, Web
-brushes: Java
 tags: ZK
 ---
 
@@ -26,23 +25,23 @@ Personally I'm not a fan of annotation-heavy frameworks because annotations are 
 
 There are many places in the ZK API where proper enums would be much better than the hacks that are used at the moment. The worst offender is Messagebox. Just look at this signature:
 
-<pre class="brush: java">
+```java
 public static int show(String message,
                        String title,
                        int buttons,
                        java.lang.String icon,
                        int focus)
-</pre>
+```
 
 Ugh..the magic integers remind me of SWT (which is a great library with an awful API). Let's imagine an alternative version with enums and generics:
 
-<pre class="brush: java">
+```java
 public static Messagebox.Button show(String message,
                        String title,
-                       Set&lt;Messagebox.Button&gt; buttons,
+                       Set<Messagebox.Button> buttons,
                        Messagebox.Icon icon,
                        Messagebox.Button focus)
-</pre>
+```
 
 Much, much better and more typesafe. No more bitwise OR magic. I could code this in 10 minutes into ZK if it would use Java 1.5.
 
@@ -56,103 +55,103 @@ I'll just list some of the places where I'd like to see generics:
 
 Example in org.zkoss.zk.ui.util.Initiator:
 
-<pre class="brush: java">
+```java
 void doInit(Page page, Map args);
-</pre>
+```
 
 vs
 
-<pre class="brush: java">
-void doInit(Page page, Map&lt;String, Object&gt; args);
-</pre>
+```java
+void doInit(Page page, Map<String, Object> args);
+```
 
 Example in org.zkoss.zk.ui.Component:
 
-<pre class="brush: java">
+```java
 List getChildren();
-</pre>
+```
 
 vs
 
-<pre class="brush: java">
-List&lt;Component&gt; getChildren();
-</pre>
+```java
+List<Component> getChildren();
+```
 
 #### Collection-like classes
 
 Example in ListModel:
 
-<pre class="brush: java">
+```java
 public interface ListModel {
   ...
   Object getElementAt(int index);
   ...
 }
-</pre>
+```
 
 vs
 
-<pre class="brush: java">
-public interface ListModel&lt;T&gt; {
+```java
+public interface ListModel<T> {
   ...
   T getElementAt(int index);
   ...
 }
-</pre>
+```
 
 All ListModel* classes should also be generic (most extend java.util.Collection).
 
 #### org.zkoss.zk.ui.event.EventListener
 
-<pre class="brush: java">
+```java
 public interface EventListener {
   public void onEvent(Event event);
 }
-</pre>
+```
 
 vs
 
-<pre class="brush: java">
-public interface EventListener&lt;T extends Event&gt; {
+```java
+public interface EventListener<T extends Event> {
   public void onEvent(T event);
 }
-</pre>
+```
 
 #### org.zkoss.zk.ui.util.GenericAutowireComposer
 
-<pre class="brush: java">
+```java
 public class GenericAutowireComposer {
   protected Component self;
   ...
 }
-</pre>
+```
 
 vs
 
-<pre class="brush: java">
-public class GenericAutowireComposer&lt;T extends Component&gt; {
+```java
+public class GenericAutowireComposer<T extends Component> {
   protected T self;
   ...
 }
-</pre>
+```
 
 #### All *Renderer classes
 
 Example in org.zkoss.zul.RowRenderer:
 
-<pre class="brush: java">
+```java
 public interface RowRenderer {
   void render(Row row, Object data);
 }
-</pre>
+```
 
 vs
 
-<pre class="brush: java">
-public interface RowRenderer&lt;T&gt; {
+```java
+public interface RowRenderer<T> {
   void render(Row row, T data);
 }
-</pre>
+```
 
 ## Unimpressive server push implementations
 

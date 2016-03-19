@@ -2,7 +2,6 @@
 title: Advanced ZK: Asynchronous UI updates and background processing - part 1
 date: 2011-12-30T21:42:30+01:00
 categories: Java, Web
-brushes: Java
 tags: ZK
 ---
 
@@ -40,7 +39,7 @@ On the other hand, asynchronous updates are done by using Executions.schedule, w
 
 Here's a small example:
 
-<pre class="brush: java">
+```java
 public class TestComposer extends GenericForwardComposer {
   private Textbox search;
 
@@ -72,6 +71,6 @@ public class TestComposer extends GenericForwardComposer {
     // Do something with result. You can touch any ZK stuff freely, just like when a normal event is posted.
   }
 }
-</pre>
+```
 
 In part 2 I show you how to use JDK5 ExecutorServices to run tasks without manually creating threads. If you truly want to understand ZK server push, you should also read the [relevant ZK documentation](http://books.zkoss.org/wiki/ZK%20Developer%27s%20Reference/Server%20Push).

@@ -5,10 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>$title$ - Joonas Javanainen</title>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,700">
-$if(brushes)$
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCoreDefault.min.css">
-$endif$
     <link rel="stylesheet" href="/css/gekkio-fi.css">
 
     <script>
@@ -34,23 +30,6 @@ $endif$
 $if(footer)$
       $footer$
 $endif$
-$if(brushes)$
-      SyntaxHighlighter by <a href="https://github.com/alexgorbatchev/syntaxhighlighter">Alex Gorbatchev</a>. 
-$endif$
     </footer>
-$if(brushes)$
-    <script src="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shAutoloader.min.js"></script>
-    <script>
-      SyntaxHighlighter.autoloader(
-        'java //cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJava.min.js',
-        'js //cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js',
-        'rust /js/shBrushRust.min.js',
-        'scala //cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushScala.min.js',
-        'xml //cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js'
-      );
-      SyntaxHighlighter.all();
-    </script>
-$endif$
   </body>
 </html>

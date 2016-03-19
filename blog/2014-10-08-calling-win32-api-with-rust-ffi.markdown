@@ -2,7 +2,6 @@
 title: Calling Win32 API with Rust FFI
 date: 2014-10-08
 categories: Rust
-brushes: Rust
 tags: Rust, Windows
 ---
 
@@ -42,7 +41,7 @@ On Windows, many of the functions have Unicode and ANSI versions, and the standa
 
 I think it's a good idea to keep all the names of types and functions exactly the same as in the target API. By default Rust warns about non-camel-case types such as `BOOL`, so we need to explicitly allow them with an annotation. Combining all the earlier work we end up with the following FFI module:
 
-<pre class="brush: rust">
+```rust
 #[allow(non_camel_case_types)]
 mod ffi {
   use libc::{c_uint, uintptr_t};
@@ -63,7 +62,7 @@ mod ffi {
     pub fn SendNotifyMessageW(hwnd: HWND, msg: UINT, wParam: WPARAM, lParam: LPARAM) -> BOOL;
   }
 }
-</pre>
+```
 
 The extra cast in `0xffff as HWND` is needed, because the type `HWND` is a void pointer, which is not compatible with integer literals.
 
@@ -71,25 +70,25 @@ The extra cast in `0xffff as HWND` is needed, because the type `HWND` is a void 
 
 Calling the module is straightforward because we are wrapping a very simple function. All FFI calls require an unsafe block, so let's encapsulate the call in a normal function:
 
-<pre class="brush: rust">
+```rust
 fn lcd_off() {
   unsafe {
     // 2 (the display is being shut off)
     ffi::SendNotifyMessageW(ffi::HWND_BROADCAST, ffi::WM_SYSCOMMAND, ffi::SC_MONITORPOWER, 2);
   }
 }
-</pre>
+```
 
 ## Finishing touches
 
 ### Console window flash
 If you compile the application and run it, you'll notice a quick console window flash. This is caused by the fact that Rust compiles applications by default as Windows console applications. To avoid the annoying flash, we need to add linker arguments specifying subsystem as "windows". As far as I know, the only way to do this is to pass raw arguments using `link_args`:
 
-<pre class="brush: rust">
+```rust
 // Link as "Windows application" to avoid console window flash
 #[link_args = "-Wl,--subsystem,windows"]
 extern {}
-</pre>
+```
 
 ### Removal of std
 

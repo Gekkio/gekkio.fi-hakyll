@@ -2,7 +2,6 @@
 title: SBT and JRebel
 date: 2010-01-21T17:34:08+01:00
 categories: Scala
-brushes: scala
 tags: JRebel, SBT, Scala
 ---
 
@@ -14,12 +13,12 @@ However, when using JRebel, you don't want Jetty to redeploy the webapp automati
 
 Here's how to disable Jetty redeploying in SBT only if JRebel is active:
 
-<pre class="brush: scala">
+```scala
 class YourProject(info: ProjectInfo) extends DefaultWebProject(info) {
   lazy val jrebelInUse = List("jrebel.lic", "javarebel.lic").exists(this.getClass.getClassLoader.getResource(_) != null)
 
   override def scanDirectories = if (jrebelInUse) Nil else super.scanDirectories
 }
-</pre>
+```
 
 **Update:** Consider using [sbt-jrebel-plugin](http://github.com/Gekkio/sbt-jrebel-plugin) instead because it can also generate _rebel.xml_ files for you!

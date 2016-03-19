@@ -2,19 +2,18 @@
 title: Spring vs Guice: The one critical difference that matters
 date: 2011-11-29T08:42:50+01:00
 categories: Java
-brushes: Java
 tags: Spring Framework, Google Guice
 ---
 
 ## Spring objects are recognized based on their names
 
-It doesn't matter whether you use XML or Java config, a Spring scope is roughly like a Map&lt;String, Object&gt; structure. This means that **you cannot have two objects with the same name**. Why is this a bad thing? If you have a large application with lots of @Configuration classes or XML files, it's very easy to accidentally use the same name twice.
+It doesn't matter whether you use XML or Java config, a Spring scope is roughly like a Map\<String, Object\> structure. This means that **you cannot have two objects with the same name**. Why is this a bad thing? If you have a large application with lots of @Configuration classes or XML files, it's very easy to accidentally use the same name twice.
 
 The worst part of this is that using the same with several objects, they silently override each other until only one actually remains in the ApplicationContext. These objects can also be of different types and the declaration order is what really determines which object wins. The problem here is that if you want to make reusable modules based on Spring, you will basically be forced to use a prefix in the name or something else to ensure you won't have a name clash.
 
 ## Guice objects are recognized based on their classes
 
-A Guice scope is basically like a Map&lt;Class&lt;?&gt;, Object&gt; structure. This means that **you cannot have two objects of the same type** without using extra metadata (e.g. qualifiers). This design choice has different pros and cons, but overall I think it's the saner one. If you create reusable modules, you mostly have to make sure that you don't export any objects of common types (e.g. String). With type-based scopes you can always create a wrapped class for common types, while with name-based scopes you would always have to use unique names based on lucky guesses. Guice also has PrivateModules so you can use Guice for all injection, but only export some of the objects in the scope.
+A Guice scope is basically like a Map\<Class\<?, \>, Object\> structure. This means that **you cannot have two objects of the same type** without using extra metadata (e.g. qualifiers). This design choice has different pros and cons, but overall I think it's the saner one. If you create reusable modules, you mostly have to make sure that you don't export any objects of common types (e.g. String). With type-based scopes you can always create a wrapped class for common types, while with name-based scopes you would always have to use unique names based on lucky guesses. Guice also has PrivateModules so you can use Guice for all injection, but only export some of the objects in the scope.
 
 ## Example code
 
@@ -24,7 +23,7 @@ Here's a naive example of a Spring application that breaks runtime because of si
 
 This class instantiates the application context, registers the configuration classes and tries to get a MyBean from the context.
 
-<pre class="brush: java">
+```java
 package springbreak;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -44,25 +43,25 @@ public class Main {
     ctx.stop();
   }
 }
-</pre>
+```
 
 ### MyBean.java
 
 This is just an example type of bean that we expect to get from the application context.
 
-<pre class="brush: java">
+```java
 package springbreak;
 
 public interface MyBean {
   String getValue();
 }
-</pre>
+```
 
 ### GoodConfig.java
 
 This is a configuration class that exports a MyBean
 
-<pre class="brush: java">
+```java
 package springbreak;
 
 import org.springframework.context.annotation.Bean;
@@ -83,13 +82,13 @@ public class GoodConfig {
   }
 
 }
-</pre>
+```
 
 ### EvilConfig.java
 
 This configuration class exports a String with the name myBean. It's not a very realistic example but shows the basic idea.
 
-<pre class="brush: java">
+```java
 package springbreak;
 
 import org.springframework.context.annotation.Bean;
@@ -104,7 +103,7 @@ public class EvilConfig {
   }
 
 }
-</pre>
+```
 
 ## Analyzing the example
 

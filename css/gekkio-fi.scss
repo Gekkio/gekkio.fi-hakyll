@@ -1,5 +1,6 @@
 @import 'css/normalize';
 @import 'css/gb-pcb-vis';
+@import 'css/hk-tango';
 
 a {
   color: #306AB9;
@@ -60,9 +61,6 @@ body > footer {
 body > article > footer {
   font-style: italic;
 }
-.syntaxhighlighter {
-  font-size: 0.75em !important;
-}
 
 table {
   width: 100%;
@@ -89,6 +87,11 @@ th {
 }
 tr.odd > td {
   background-color: #fafafa;
+}
+pre {
+  border: 1px solid #ddd;
+  font-size: 75%;
+  background-color: #f8f8f8;
 }
 
 gbpcbvis:after {

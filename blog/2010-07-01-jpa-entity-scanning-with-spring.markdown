@@ -2,24 +2,23 @@
 title: JPA entity scanning with Spring
 date: 2010-07-01T20:17:02+02:00
 categories: Java
-brushes: Scala, Xml
 tags: Java, Java Persistence API, Spring Framework
 ---
 
 If you've used JPA, does this look familiar?
 
-<pre class="brush: xml">
-&lt;persistence&gt;
-  &lt;persistence-unit&gt;
-    &lt;class&gt;my.entities.package.Entity&lt;/class&gt;
-    &lt;class&gt;my.entities.package.Another&lt;/class&gt;
-    &lt;class&gt;my.entities.package.More&lt;/class&gt;
-    &lt;class&gt;my.entities.package.EvenMore&lt;/class&gt;
-    &lt;class&gt;my.entities.package.AndMore&lt;/class&gt;
-    &lt;class&gt;my.entities.package.AndEvenMore&lt;/class&gt;
-  &lt;/persistence-unit&gt;
-&lt;/persistence&gt;
-</pre>
+```xml
+<persistence>
+  <persistence-unit>
+    <class>my.entities.package.Entity</class>
+    <class>my.entities.package.Another</class>
+    <class>my.entities.package.More</class>
+    <class>my.entities.package.EvenMore</class>
+    <class>my.entities.package.AndMore</class>
+    <class>my.entities.package.AndEvenMore</class>
+  </persistence-unit>
+</persistence>
+```
 
 Writing JPA entity class names into persistence.xml can be a pain. How could a <span class="line-through">lazy</span> wise programmer make it easier?
 
@@ -33,7 +32,7 @@ A post processor could for example scan a base package for entities and add all 
 
 Here's a post processor written in Scala:
 
-<pre class="brush: scala">
+```scala
 import javax.persistence.{Entity, Embeddable, MappedSuperclass}
 
 import org.slf4j.LoggerFactory
@@ -63,11 +62,11 @@ class EntityScanningPersistenceUnitPostProcessor(basePackage: String)
   }
 
 }
-</pre>
+```
 
 Here's how to use it with Spring JavaConfig:
 
-<pre class="brush: scala">
+```scala
 @Bean
 def entityManagerFactory = {
   val bean = new org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
@@ -75,7 +74,7 @@ def entityManagerFactory = {
   bean.setPersistenceUnitPostProcessors(Array(new EntityScanningPersistenceUnitPostProcessor("my.entities.package")))
   bean
 }
-</pre>
+```
 
 The major downside in this approach is that some JPA tooling assumes that persistence.xml contains the entities that will be used.
 

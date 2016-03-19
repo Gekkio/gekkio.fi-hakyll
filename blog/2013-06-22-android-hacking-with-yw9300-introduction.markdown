@@ -5,7 +5,7 @@ categories: Android
 tags: Android, YW9300, hacking, Cyanogenmod
 ---
 
-I've spent a huge chunk of my free time this week on learning Android internals by tinkering with an Android device called YW9300. It's a reasonably cheap device with a powerful SoC (system-on-a-chip) called Exynos 4412 (officially "Exynos 4 Quad"). This is the same chip that exists in every Galaxy S III phone, and is also used in some other Samsung and 3rd party products. My goal was to create a bootable custom ROM with Android 4.2 ("Jelly Bean"), because I was unsatisfied with the stock ROM supplied by the manufacturer (I'll explain later why). <del>I ended up failing my goal and bricking the device</del><del>, but</del> I thought I should share my experiences, so other people could use the knowledge I have gained, and avoid the mistakes I did._ (Update: I thought I had already tried it, but I managed to recover using an original update.zip!)_
+I've spent a huge chunk of my free time this week on learning Android internals by tinkering with an Android device called YW9300. It's a reasonably cheap device with a powerful SoC (system-on-a-chip) called Exynos 4412 (officially "Exynos 4 Quad"). This is the same chip that exists in every Galaxy S III phone, and is also used in some other Samsung and 3rd party products. My goal was to create a bootable custom ROM with Android 4.2 ("Jelly Bean"), because I was unsatisfied with the stock ROM supplied by the manufacturer (I'll explain later why). <del>I ended up failing my goal and bricking the device, but</del> I thought I should share my experiences, so other people could use the knowledge I have gained, and avoid the mistakes I did. <ins>Update: I thought I had already tried it, but I managed to recover using an original update.zip!</ins>
 
 ## What exactly is YW9300?
 
@@ -17,7 +17,7 @@ Exynos 4412 is a very powerful SoC at this price point, and the only real compet
 
 #### Android version
 
-<span style="line-height: 13px;">The manufacturer and sellers claim that it contains Android 4.2.1, but actually it is 4.0.x. This is easily verifiable by looking at the build.prop file that I will explain in a later post. Even the device itself says Android 4.2.1 in the About-section, but that is wrong and seems to be just the manufacturer trying to trick people. Claiming they have Android 4.2.1 _and_ support for Flash should already ring the alarm bells, because Flash does _not_ work on Android 4.2+.</span>
+The manufacturer and sellers claim that it contains Android 4.2.1, but actually it is 4.0.x. This is easily verifiable by looking at the build.prop file that I will explain in a later post. Even the device itself says Android 4.2.1 in the About-section, but that is wrong and seems to be just the manufacturer trying to trick people. Claiming they have Android 4.2.1 _and_ support for Flash should already ring the alarm bells, because Flash does _not_ work on Android 4.2+.
 
 #### USB camera support
 

@@ -21,7 +21,7 @@ interest in Rust won, and I ported all the existing code to something that later
 
 In case you are curious, here's a snippet of some early ocamlboy code:
 
-```
+```ocaml
 let read_addr8 (cpu : cpu) (mem : Memory.mem) (mode : addr8_mode) : int = match mode with
   | Immediate ->
     let v = Memory.read8 mem cpu.regs.pc in

@@ -1,5 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
+import Control.Monad (liftM)
 import Data.Monoid ((<>))
+import Hakyll.Web.Sass (sassCompiler)
 import Hakyll
 
 main :: IO ()
@@ -28,9 +30,9 @@ main = hakyll $ do
     route   idRoute
     compile copyFileCompiler
 
-  match "css/*" $ do
-    route   idRoute
-    compile compressCssCompiler
+  match "css/gekkio-fi.scss" $ do
+    route $ constRoute "css/gekkio-fi.css"
+    compile $ liftM (fmap compressCss) sassCompiler
 
   match "blog/*" $ do
     route $ setExtension "html"
@@ -58,7 +60,7 @@ main = hakyll $ do
     compile $ do
       posts <- recentFirst =<< loadAll "blog/*"
       pages <- loadAll "*.html"
-      let allPosts = (return (pages ++ posts))
+      let allPosts = return (pages ++ posts)
       let sitemapCtx = listField "entries" postCtx allPosts <>
                        defaultContext
 

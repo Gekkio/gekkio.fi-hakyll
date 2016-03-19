@@ -5,7 +5,7 @@ tags: Gameboy
 ---
 
 Last year I took PCB photos of all Game Boy games I own, but I never managed to
-categorize or publish the scans. I'm not going to analyze all of these in
+categorize or publish the photos I'm not going to analyze all of these in
 detail, so I'm just going to leave the photos and basic information here for
 those who are interested in such things.
 
@@ -29,7 +29,7 @@ There's a lot of games here, but here are some especially interesting ones:
 + Japanese Pokemon Crystal uses MBC30, which seems to be a special variant of MBC3
 + Net de Get uses MBC6, and has *a flash chip for downloadable minigames*
 
-Title                                                 Mapper    PCB code         Scans
+Title                                                 Mapper    PCB code         Photos
 ---------------------------------------------------   -------   --------------   --------------------------------------------------------------------------------------------------------------------------------------
 Ayakashi no Shiro                                     MBC2      DMG-GDAN-02      [Front](/files/gb-cartridges/DMG-GDAN-02.DMG-AYJ.front.jpg),         [Back](/files/gb-cartridges/DMG-GDAN-02.DMG-AYJ.back.jpg)
 Bomber Boy                                            MBC1      DMG-BEAN-02      [Front](/files/gb-cartridges/DMG-BEAN-02.DMG-HBA.front.jpg),         [Back](/files/gb-cartridges/DMG-BEAN-02.DMG-HBA.back.jpg)
@@ -59,7 +59,7 @@ WWF Superstars                                        MBC1      DMG-BEAN-02     
 
 Table: Game Boy cartridges
 
-Title                                                                     Mapper    PCB code      Scans
+Title                                                                     Mapper    PCB code      Photos
 -----------------------------------------------------------------------   -------   -----------   ---------------------------------------------------------------------------------------------------------------------------------
 Command Master                                                            MBC7      DMG-A47-01    [Front](/files/gb-cartridges/DMG-A47-01.CGB-KCEJ-JPN.front.jpg),   [Back](/files/gb-cartridges/DMG-A47-01.CGB-KCEJ-JPN.back.jpg)
 Daikaijuu Monogatari - The Miracle of the Zone II                         HuC-1     DMG-TFDN-01   [Front](/files/gb-cartridges/DMG-TFDN-01.DMG-AM6J-JPN.front.jpg),  [Back](/files/gb-cartridges/DMG-TFDN-01.DMG-AM6J-JPN.back.jpg)

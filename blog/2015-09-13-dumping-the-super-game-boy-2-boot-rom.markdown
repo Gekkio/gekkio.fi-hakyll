@@ -93,7 +93,7 @@ I wrote a small dumper program that simply copies the first 256 bytes of the add
 
 Here's the code in wla-dx format. It uses an external [common.s](https://github.com/Gekkio/mooneye-gb/blob/a5059b128cccd9b9532e3cbd1dd93b3350e76927/tests/common/common.s) file from my Mooneye GB emulator repository.
 
-```asm
+```gnuassembler
 .define CART_TYPE 3 ; MBC1+RAM+BATTERY
 .define CART_ROM_BANKS 4
 .define CART_RAM_SIZE 1

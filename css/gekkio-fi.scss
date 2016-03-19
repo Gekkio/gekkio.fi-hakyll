@@ -2,6 +2,27 @@
 @import 'css/gb-pcb-vis';
 @import 'css/hk-tango';
 
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
 a {
   color: #306AB9;
   text-decoration: none;
@@ -35,7 +56,7 @@ body > header > nav {
   right: 0;
 }
 body > header > nav a {
-  font-size: 1.5em;
+  @include font-size(24px);
   font-weight: bold;
   margin-left: 2em;
 }
@@ -50,7 +71,7 @@ body > article, body > section {
 body > footer {
   padding: 0 1em;
   margin: 0.5em 0;
-  font-size: 0.8em;
+  @include font-size(12px);
 }
 #home-links {
   text-align: center;
@@ -64,19 +85,19 @@ body > article > footer {
 
 table {
   width: 100%;
-  font-size: 90%;
+  @include font-size(14px);
   margin: 15px 0;
   border-collapse: collapse;
   border: 1px #ddd solid;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-	-moz-box-shadow: 0 1px 2px #ddd;
-	-webkit-box-shadow: 0 1px 2px #ddd;
-	box-shadow: 0 1px 2px #ddd;
+  -moz-box-shadow: 0 1px 2px #ddd;
+  -webkit-box-shadow: 0 1px 2px #ddd;
+  box-shadow: 0 1px 2px #ddd;
 }
 table > caption {
-  font-size: 20px;
+  @include font-size(20px);
   font-weight: bold;
 }
 td, th {
@@ -94,12 +115,9 @@ pre {
   background-color: #f8f8f8;
 }
 
-.gbpcbvis:after {
-  content: " ";
-  clear: both;
-  display: block;
+.gbpcbvis {
+  @extend %clearfix;
 }
-
 .gbpcbvis button {
   font-weight: bold;
 }

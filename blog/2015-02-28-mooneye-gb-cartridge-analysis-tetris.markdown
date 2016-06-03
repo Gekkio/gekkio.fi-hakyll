@@ -1,5 +1,5 @@
 ---
-title: Mooneye GB: Cartridge analysis - Tetris (no MBC)
+title: "Mooneye GB: Cartridge analysis - Tetris (no MBC)"
 date: 2015-02-28
 categories: Mooneye GB
 tags: Gameboy, Mooneye GB

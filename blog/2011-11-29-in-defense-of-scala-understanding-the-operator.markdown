@@ -1,5 +1,5 @@
 ---
-title: In defense of Scala: Understanding the ++ operator
+title: "In defense of Scala: Understanding the ++ operator"
 date: 2011-11-29T12:13:07+01:00
 categories: Scala
 tags: Scala

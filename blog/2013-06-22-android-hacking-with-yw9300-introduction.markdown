@@ -1,5 +1,5 @@
 ---
-title: Android hacking with YW9300: Introduction
+title: "Android hacking with YW9300: Introduction"
 date: 2013-06-22T18:48:00+02:00
 categories: Android
 tags: Android, YW9300, hacking, Cyanogenmod

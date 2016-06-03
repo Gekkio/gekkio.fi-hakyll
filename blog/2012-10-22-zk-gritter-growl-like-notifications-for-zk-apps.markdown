@@ -1,5 +1,5 @@
 ---
-title: ZK Gritter: Growl-like notifications for ZK apps
+title: "ZK Gritter: Growl-like notifications for ZK apps"
 date: 2012-10-22T13:08:40+02:00
 categories: Java, Web
 tags: ZK, Java

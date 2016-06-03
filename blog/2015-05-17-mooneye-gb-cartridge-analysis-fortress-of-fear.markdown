@@ -1,5 +1,5 @@
 ---
-title: Mooneye GB: Cartridge analysis - Wizards &amp; Warriors X: Fortress of Fear (MBC1)
+title: "Mooneye GB: Cartridge analysis - Wizards &amp; Warriors X: Fortress of Fear (MBC1)"
 date: 2015-05-17
 categories: Mooneye GB
 tags: Gameboy, Mooneye GB

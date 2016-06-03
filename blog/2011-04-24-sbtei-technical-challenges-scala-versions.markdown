@@ -1,5 +1,5 @@
 ---
-title: SBTEI technical challenges: Scala versions
+title: "SBTEI technical challenges: Scala versions"
 date: 2011-04-24T15:37:17+02:00
 tags: SBT, Scala, Eclipse
 ---

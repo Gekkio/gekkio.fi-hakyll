@@ -1,5 +1,5 @@
 ---
-title: Advanced ZK: Asynchronous UI updates and background processing - part 1
+title: "Advanced ZK: Asynchronous UI updates and background processing - part 1"
 date: 2011-12-30T21:42:30+01:00
 categories: Java, Web
 tags: ZK

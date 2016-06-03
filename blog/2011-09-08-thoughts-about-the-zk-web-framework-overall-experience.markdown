@@ -1,5 +1,5 @@
 ---
-title: Thoughts about the ZK Web Framework: Overall experience
+title: "Thoughts about the ZK Web Framework: Overall experience"
 date: 2011-09-08T20:25:29+02:00
 categories: Java, Web
 tags: ZK

@@ -1,5 +1,5 @@
 ---
-title: Mooneye GB: A Gameboy emulator written in Rust
+title: "Mooneye GB: A Gameboy emulator written in Rust"
 date: 2015-01-13
 categories: Rust, Mooneye GB
 tags: Rust, Gameboy, Mooneye GB

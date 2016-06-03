@@ -1,5 +1,5 @@
 ---
-title: Client-side ZK, Part 1: Integrating simple jQuery plugins
+title: "Client-side ZK, Part 1: Integrating simple jQuery plugins"
 date: 2011-04-03T12:00:21+02:00
 categories: Java, Web
 tags: Scala, ZK, JQuery

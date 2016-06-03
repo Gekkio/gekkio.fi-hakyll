@@ -1,5 +1,5 @@
 ---
-title: Mooneye GB: Gameboy cartridge types
+title: "Mooneye GB: Gameboy cartridge types"
 date: 2015-02-14
 categories: Mooneye GB
 tags: Gameboy, Mooneye GB

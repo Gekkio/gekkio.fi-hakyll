@@ -1,5 +1,5 @@
 ---
-title: SBTEI technical challenges: Project metadata
+title: "SBTEI technical challenges: Project metadata"
 date: 2011-04-28T23:15:41+02:00
 tags: SBT, Scala, Eclipse
 ---

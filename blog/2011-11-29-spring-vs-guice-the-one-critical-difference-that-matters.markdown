@@ -1,5 +1,5 @@
 ---
-title: Spring vs Guice: The one critical difference that matters
+title: "Spring vs Guice: The one critical difference that matters"
 date: 2011-11-29T08:42:50+01:00
 categories: Java
 tags: Spring Framework, Google Guice

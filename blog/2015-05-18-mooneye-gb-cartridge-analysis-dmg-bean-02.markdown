@@ -1,5 +1,5 @@
 ---
-title: Mooneye GB: Cartridge analysis - three games with DMG-BEAN-02 boards
+title: "Mooneye GB: Cartridge analysis - three games with DMG-BEAN-02 boards"
 date: 2015-05-18
 categories: Mooneye GB
 tags: Gameboy, Mooneye GB

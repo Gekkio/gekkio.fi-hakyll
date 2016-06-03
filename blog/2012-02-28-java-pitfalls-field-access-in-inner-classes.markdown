@@ -1,5 +1,5 @@
 ---
-title: Java pitfalls: Field access in inner classes
+title: "Java pitfalls: Field access in inner classes"
 date: 2012-02-28T09:51:40+01:00
 categories: Java
 tags: Java

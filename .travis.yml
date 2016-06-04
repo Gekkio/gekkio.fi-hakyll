@@ -4,8 +4,6 @@ addons:
   apt:
     packages:
       - libgmp-dev
-  ssh_known_hosts:
-    - "$DEPLOY_HOST"
 cache:
   directories:
     - "$HOME/.stack"
@@ -33,4 +31,4 @@ script:
 after_success:
   - eval "$(ssh-agent -s)"
   - ssh-add .travis/id_rsa
-  - rsync -urt -e "ssh -p $DEPLOY_PORT -l travis" $DEPLOY_HOST:gekkio.fi/
+  - rsync -urt -e "ssh -o StrictHostKeyChecking=no -p $DEPLOY_PORT -l travis" $DEPLOY_HOST:gekkio.fi/

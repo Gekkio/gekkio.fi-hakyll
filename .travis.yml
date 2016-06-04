@@ -4,6 +4,8 @@ addons:
   apt:
     packages:
       - libgmp-dev
+  ssh_known_hosts:
+    - "$DEPLOY_HOST"
 cache:
   directories:
     - "$HOME/.stack"

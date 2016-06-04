@@ -31,4 +31,4 @@ script:
 after_success:
   - eval "$(ssh-agent -s)"
   - ssh-add .travis/id_rsa
-  - rsync -qurt -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p $DEPLOY_PORT -l travis" $DEPLOY_HOST:gekkio.fi/
+  - rsync -qurt -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p $DEPLOY_PORT -l travis" _site/ $DEPLOY_HOST:gekkio.fi/

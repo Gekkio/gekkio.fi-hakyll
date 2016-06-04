@@ -1,29 +1,34 @@
 sudo: false
 language: c
-
 addons:
   apt:
     packages:
       - libgmp-dev
-
 cache:
   directories:
-    - $HOME/.stack
-
+    - "$HOME/.stack"
+env:
+  global:
+    - secure: kwp7vp00zCoQruHH2xE7cQRxa2Fga8OyoJAXiEOTtHxu68IU9tZIxVKt9w2ngFtgXKc9KnxQ6DC0l9xrqIaJWFMobHuZx8PWqgQuSq99/qTprZPpyYjgM+HFJJKs3w4PDSboDPRGX49hnOwTMY60piZWOn6rZcuUELYmAFfjy0U=
+    - secure: gHW8hrYrK6fM8ucosiQ6fmvnb5l32128yoxsK5i/BZ4gSmSo/55E11OpKlLfjrDW1WDlVuQg1+nsritsqMcihe8fY1y56NZyJP01tYSFedcmdSL8QMwyQkmqbB3wnuGVWU/soALOfWyw4VTkXLHi/5tyGOwqsPcXnjnWvpjnuks=
 before_install:
+  - openssl aes-256-cbc -K $encrypted_64b0588f674e_key -iv $encrypted_64b0588f674e_iv -in .travis/id_rsa.enc -out .travis/id_rsa -d
+  - chmod 600 .travis/id_rsa
   - mkdir -p ~/.local/bin
   - export PATH=$HOME/.local/bin:$PATH
   - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
-
 install:
   - |
     set -ex
     stack --no-terminal --install-ghc build --only-dependencies
     set +ex
-
 script:
   - |
     set -ex
     stack --no-terminal build
     stack --no-terminal exec site rebuild
     set +ex
+after_success:
+  - eval "$(ssh-agent -s)"
+  - ssh-add .travis/id_rsa
+  - rsync -urt -e "ssh -p $DEPLOY_PORT -l travis" $DEPLOY_HOST:gekkio.fi/

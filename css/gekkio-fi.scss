@@ -65,8 +65,6 @@ body > header > nav a {
 body > article, body > section {
   background-color: #fff;
   border: 1px solid #AFD1FF;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
   border-radius: 5px;
   padding: 1em;
 }
@@ -91,11 +89,7 @@ table {
   margin: 15px 0;
   border-collapse: collapse;
   border: 1px #ddd solid;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: 0 1px 2px #ddd;
-  -webkit-box-shadow: 0 1px 2px #ddd;
   box-shadow: 0 1px 2px #ddd;
 }
 table > caption {
@@ -124,9 +118,24 @@ pre {
   font-weight: bold;
 }
 .gbpcbvis .controls {
-  width: 100px;
-  float: right;
+  text-align: center;
 }
 .gbpcbvis .images {
-  margin-right: 100px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+.gbpcbvis .images > div {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }

@@ -32,5 +32,5 @@ script:
 after_success:
   - eval "$(ssh-agent -s)"
   - ssh-add .travis/id_rsa
-  - rsync --delete -qurt -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet -p $DEPLOY_PORT -l travis" _site/ $DEPLOY_HOST:gekkio.fi/ > /dev/null 2>&1
+  - rsync --delete -qurt -e "ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet -p $DEPLOY_PORT -l travis" _site/ $DEPLOY_HOST:gekkio.fi/ > /dev/null 2>&1
   - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet -p $DEPLOY_PORT -l travis $DEPLOY_HOST ./deploy_site.sh > /dev/null 2>&1

@@ -1,2 +1,6 @@
 User-agent: *
-Allow: /
+Disallow: /files
+Allow: /files/gb-docs
+Allow: /files/mooneye-gb
+
+Sitemap: https://gekkio.fi/sitemap.xml

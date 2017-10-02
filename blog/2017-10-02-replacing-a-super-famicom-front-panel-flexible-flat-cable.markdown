@@ -1,5 +1,5 @@
 ---
-title: "Replacing the Super Famicom front panel flexible flat cable"
+title: "Replacing a Super Famicom front panel flexible flat cable"
 date: 2017-10-02
 tags: Hardware, modding, Super Famicom
 ---
@@ -17,7 +17,7 @@ Time for some SFC modding hall-of-shame photos!
 
 ![CIC pads should *not* look like this after desoldering the chip](/images/2017/sfc_modding_gore_1.jpg)
 
-![Horror...S-PPU1 pin 81 doesn't even need to be touched in this mod!](/images/2017/sfc_modding_gore_2.jpg)
+![Horror...none of these pins even need to be touched in this mod!](/images/2017/sfc_modding_gore_2.jpg)
 
 ![The front panel flat cable doesn't like it when you bend it like this...](/images/2017/sfc_modding_gore_3.jpg)
 

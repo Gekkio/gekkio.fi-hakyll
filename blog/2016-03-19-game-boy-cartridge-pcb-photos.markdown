@@ -29,6 +29,8 @@ There's a lot of games here, but here are some especially interesting ones:
 + Japanese Pokemon Crystal uses MBC30, which seems to be a special variant of MBC3
 + Net de Get uses MBC6, and has *a flash chip for downloadable minigames*
 
+**Update 2018-02-25: Please check out the [Game Boy Hardware Database](https://gbhwdb.gekkio.fi/cartridges/) for photos and data of a huge amount of cartridges**
+
 Title                                                 Mapper    PCB code         Photos
 ---------------------------------------------------   -------   --------------   --------------------------------------------------------------------------------------------------------------------------------------
 Ayakashi no Shiro                                     MBC2      DMG-GDAN-02      [Front](/files/gb-cartridges/DMG-GDAN-02.DMG-AYJ.front.jpg),         [Back](/files/gb-cartridges/DMG-GDAN-02.DMG-AYJ.back.jpg)

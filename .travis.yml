@@ -29,14 +29,14 @@ before_install:
 
 install:
   - stack -j2 --no-terminal setup
-  - stack -j2 --no-terminal --only-dependencies build
+  - stack -j2 --no-terminal build --only-dependencies
 
 before_script:
   - git lfs pull
 
 script:
   - stack -j2 --no-terminal build
-  - stack --no-terminal exec site rebuild
+  - stack -j2 --no-terminal exec site rebuild
 
 after_success:
   - eval "$(ssh-agent -s)"

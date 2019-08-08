@@ -27,6 +27,10 @@ main = hakyll $ do
     route   idRoute
     compile copyFileCompiler
 
+  match "publickey.gekkio@gekkio.fi.asc" $ do
+    route   idRoute
+    compile copyFileCompiler
+
   match "images/**" $ do
     route   idRoute
     compile copyFileCompiler
